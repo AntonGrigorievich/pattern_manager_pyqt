@@ -10,8 +10,6 @@ def on_startup():
 
 # Устанавливаем соединение обьекта db с базой данных
 # и запускаем виджет авторизации/регистрации пользователя
-
-# asdfkj;aslkdfj;alksdjf;laksdjf
 if __name__ == '__main__':
     on_startup()
     app = QApplication(sys.argv)
