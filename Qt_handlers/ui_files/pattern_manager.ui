@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>865</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>865</width>
+    <height>580</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>PatternManager</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../pictures/misha_boxer.jpg</normaloff>../../pictures/misha_boxer.jpg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background-color: rgb(35, 35, 35);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="foldername_lineedit">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>460</y>
+      <width>240</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+}
+
+QLineEdit:hover {
+	color: rgb(178, 246, 159);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}
+
+QLineEdit:focus {
+	border-color:rgb(169, 255, 186);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Folder Name</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create_folder_button">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>460</y>
+      <width>150</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.3em;
+	background-color:rgb(169, 255, 186);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgb(115, 255, 148);
+}</string>
+    </property>
+    <property name="text">
+     <string>Create Folder</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="settings_button">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>400</y>
+      <width>411</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.3em;
+	background-color:rgb(169, 255, 186);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgb(115, 255, 148);
+}</string>
+    </property>
+    <property name="text">
+     <string>Choose settings for your pattern</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create_button">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>340</y>
+      <width>411</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.3em;
+	background-color:rgb(169, 255, 186);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    /* transform: translateY(3px);*/
+    /*transform: skewY(-1deg); */
+    cursor: pointer;
+    background-color: rgb(115, 255, 148);
+}</string>
+    </property>
+    <property name="text">
+     <string>Create your own pattern</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="notify_lable">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>460</y>
+      <width>371</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+}
+
+QLabel:hover {
+	color: rgb(178, 246, 159);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>folder (folder_name) by pattern (pattern_name) succesfully made!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="greeting_lable">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>811</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: uppercase;
+}
+
+QLabel:hover {
+	color: rgb(178, 246, 159);
+    /* transform: translateY(3px);*/
+    /*transform: skewY(-1deg); */
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Welcome! You are using pattern manager by Lev Yurievich Ciifer. 
+It allows you to create ready-made architecture for your project
+or make your own architecture pattern </string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="pattern_table">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>160</y>
+      <width>371</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableView {
+	background-color: rgb(104, 104, 104);
+	color: white;
+	border-radius: 20px;
+}
+
+
+
+QHeaderView::section {
+	background-color: rgb(104, 104, 104);
+	color: white;
+}
+QHeaderView {
+	background-color: rgb(104, 104, 104);
+	color: white;
+}
+QTableCornerButton::section {
+	background-color: rgb(104, 104, 104);
+	color: white;
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="examples_lable">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>110</y>
+      <width>371</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+QLabel:hover {
+	color: rgb(178, 246, 159);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Here are some examples, that you can use</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="table_update_button">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>410</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: white;
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+	background-color:rgb(104, 104, 104);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}</string>
+    </property>
+    <property name="text">
+     <string>update table</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="create_folder_button_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>410</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: white;
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+	background-color:rgb(104, 104, 104);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}</string>
+    </property>
+    <property name="text">
+     <string>as</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
