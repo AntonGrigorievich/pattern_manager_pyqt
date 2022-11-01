@@ -1,4 +1,6 @@
 import shutil
+import zipfile
+import os
 from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
@@ -27,27 +29,28 @@ class MainWindow(QMainWindow):
         self.table_update_button.clicked.connect(self.update_table)
     
     def create_pattern(self):
-        pattern_name, ok_pressed  =  QInputDialog.getText(self, "Введите название шаблона", 
-                                                "Как будет называться шаблон?")
-        if pattern_name not in db.sql_get_pattern_names():
+        pattern_name, ok_pressed  =  QInputDialog.getText(self, "Insert pattern name", 
+                                                "What will the pattern name be?")
+        if pattern_name not in db.sql_get_pattern_names() and pattern_name.strip() != '':
             if ok_pressed:
-                fname = QFileDialog.getOpenFileName(self, 'Выбратьz zip папку', '')[0]
-                if fname not in db.sql_get_pattern_directorys():
+                fname = QFileDialog.getOpenFileName(self, 'Выбратьz zip папку', '', '(*.zip)')[0]
+                if fname not in db.sql_get_pattern_directorys() and fname.strip() != '':
+                    file_zip = zipfile.ZipFile(f'patterns\\{pattern_name}.zip', 'w')
+
+                    shutil.copy(fname, f'patterns\\{pattern_name}.zip')
+                    file_zip.close()
                     db.sql_add_pattern(pattern_name, fname)
-                    shutil.copy(fname, 'L:\\VS\\vsProjects\\test_task\\patterns\\new pattern.zip')
                     self.model.setTable('patterns')
                     self.model.select()
                     self.pattern_table.setModel(self.model)
                     self.pattern_table.setColumnWidth(0, 176)
                     self.pattern_table.setColumnWidth(1, 177)
-                    self.notify_lable.setText("""Pattern successfully made!
-                    Please don't remove the original file from it's directory 
-                    if you want to use the pattern in future""")
+                    self.notify_lable.setText("""Pattern successfully made!""")
                 else:
-                    self.notify_lable.setText('Pattern with this directory aleady exists')
+                    self.notify_lable.setText('Pattern by this directory aleady exists')
 
         elif pattern_name:
-            self.notify_lable.setText('This name is already taken. Please choose another')
+            self.notify_lable.setText('This name is invalid or already taken. Please choose another')
 
     def update_table(self):
         self.model.setTable('patterns')
