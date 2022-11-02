@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
 
                     shutil.copy(fname, f'patterns\\{pattern_name}.zip')
                     file_zip.close()
-                    db.sql_add_pattern(pattern_name, fname)
+                    db.sql_add_pattern(pattern_name, f'patterns/{pattern_name}.zip')
                     # self.model.setTable('patterns')
                     self.model.select()
                     self.pattern_table.setModel(self.model)
@@ -122,10 +122,10 @@ class TableEdit(QWidget):
         self.initUI()
     
     def initUI(self):
-        db = QSqlDatabase.addDatabase('QSQLITE')
-        db.setDatabaseName('database.db')
-        db.open()
-        self.model = QSqlTableModel(self, db)
+        self.db = QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName('database.db')
+        self.db.open()
+        self.model = QSqlTableModel(self, self.db)
         self.model.setTable('patterns')
         self.model.select()
         self.pattern_table.setModel(self.model)
@@ -133,19 +133,24 @@ class TableEdit(QWidget):
         self.pattern_table.setColumnWidth(1, 265)
         self.delete_button.clicked.connect(self.delete_item)
         self.drop_button.clicked.connect(self.drop_table)
+        self.update_button.clicked.connect(self.update_table)
 
     def delete_item(self):
-        query = self.query_lineedit.text()
+        pattern = self.query_lineedit.text()
         msgbox = QMessageBox()
         msgbox.setStyleSheet("QLable {color: white;}")
         valid = msgbox.question(
-            self, '', f"Are you sure you want to completethis query: {query}",
+            self, '', f"Are you sure you want to delete this item: {pattern}",
             QMessageBox.Yes, QMessageBox.No)
+        print('passed question')
         # Если пользователь ответил утвердительно, выполняем запрос. 
         # Не забываем зафиксировать изменения
         if valid == QMessageBox.Yes:
+            print('entered if valid')
             try:
-                db.sql_complte_user_query(query)
+                os.remove(f'patterns/{pattern}.zip')
+                db.sql_remove_pattern(pattern)
+                print('passed remove')
                 self.model.setTable('patterns')
                 self.model.select()
                 self.pattern_table.setModel(self.model)
@@ -153,6 +158,7 @@ class TableEdit(QWidget):
                 self.pattern_table.setColumnWidth(1, 265)
             except Exception:
                 self.table_edit_lable.setText('Failed to complete the query')
+            
 
     def drop_table(self):
         msgbox = QMessageBox()
@@ -161,9 +167,18 @@ class TableEdit(QWidget):
             self, '', f"Are you sure you want to drop whole table?",
             QMessageBox.Yes, QMessageBox.No)
         if valid == QMessageBox.Yes:
+            for direct in db.sql_get_pattern_directorys():
+                os.remove(direct)
             db.sql_drop_table('patterns')
             self.model.setTable('patterns')
             self.model.select()
             self.pattern_table.setModel(self.model)
             self.pattern_table.setColumnWidth(0, 265)
             self.pattern_table.setColumnWidth(1, 265)
+
+    def update_table(self):
+        self.model.select()
+        self.pattern_table.setModel(self.model)
+        self.pattern_table.setColumnWidth(0, 265)
+        self.pattern_table.setColumnWidth(1, 265)
+        self.table_edit_lable.setText('Table updated') 

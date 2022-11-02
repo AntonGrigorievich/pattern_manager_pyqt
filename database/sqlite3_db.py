@@ -40,7 +40,7 @@ class DataBase:
         return curs.fetchone()[0]
 
     # метод удаления пользователя из таблицы
-    def sql_remove_user(self, user_login):
+    def sql_remove_user(user_login):
         curs.execute(f"""DELETE FROM users WHERE user_loggin = '{user_login}'""")
         db.commit()
     
@@ -60,7 +60,7 @@ class DataBase:
         return [i[0] for i in curs.fetchall()]
 
     # метод удаления шаблона из таблицы
-    def sql_remove_pattern(self, pattern_name):
+    def sql_remove_pattern(pattern_name):
         curs.execute(f"""DELETE FROM patterns WHERE pattern_name = '{pattern_name}'""")
         db.commit()
 
