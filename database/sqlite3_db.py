@@ -16,6 +16,7 @@ class DataBase:
     # метод очистки таблицы бд
     def sql_drop_table(table_name):
         curs.execute(f"""DROP TABLE {table_name}""")
+        db.execute(f"""CREATE TABLE IF NOT EXISTS {table_name} (pattern_name TEXT, folder_directory TEXT)""")
         db.commit()
 
     # метод добавления пользователя в таблицу users
@@ -61,4 +62,9 @@ class DataBase:
     # метод удаления шаблона из таблицы
     def sql_remove_pattern(self, pattern_name):
         curs.execute(f"""DELETE FROM patterns WHERE pattern_name = '{pattern_name}'""")
+        db.commit()
+
+    # метод для выполнения пользовательского запроса
+    def sql_complte_user_query(query):
+        curs.execute(query)
         db.commit()

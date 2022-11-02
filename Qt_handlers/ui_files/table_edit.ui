@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>613</width>
-    <height>385</height>
+    <height>382</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -64,10 +64,10 @@ QPushButton:hover {
 }</string>
    </property>
    <property name="text">
-    <string>Delete element</string>
+    <string>complete the query</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="create_button_2">
+  <widget class="QPushButton" name="drop_button">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -104,7 +104,7 @@ QPushButton:hover {
     <string>Drop table</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="foldername_lineedit">
+  <widget class="QLineEdit" name="query_lineedit">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -134,23 +134,23 @@ QLineEdit:focus {
 }</string>
    </property>
    <property name="text">
-    <string/>
+    <string>DELETE FROM patterns WHERE pattern_name = &quot;pattern name which needs to be deleted&quot;</string>
    </property>
    <property name="placeholderText">
-    <string>Filter</string>
+    <string>Query</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="pattern_table">
+  <widget class="QTableView" name="pattern_table">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
+     <y>59</y>
      <width>570</width>
-     <height>240</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QTableWidget {
+    <string notr="true">QTableView {
 	background-color: rgb(104, 104, 104);
 	color: white;
 	border-radius: 20px;
@@ -170,6 +170,37 @@ QTableCornerButton::section {
 	background-color: rgb(104, 104, 104);
 	color: white;
 }</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="table_edit_lable">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>571</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+QLabel:hover {
+	color: rgb(178, 246, 159);
+    cursor: pointer;
+    background-color: rgba(104, 104, 104, 0.911);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Insert your query below</string>
    </property>
   </widget>
  </widget>

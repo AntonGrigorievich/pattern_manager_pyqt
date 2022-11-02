@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
                     shutil.copy(fname, f'patterns\\{pattern_name}.zip')
                     file_zip.close()
                     db.sql_add_pattern(pattern_name, fname)
-                    self.model.setTable('patterns')
+                    # self.model.setTable('patterns')
                     self.model.select()
                     self.pattern_table.setModel(self.model)
                     self.pattern_table.setColumnWidth(0, 176)
@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
             self.notify_lable.setText('This name is invalid or already taken. Please choose another')
 
     def update_table(self):
-        self.model.setTable('patterns')
+        # self.model.setTable('patterns')
         self.model.select()
         self.pattern_table.setModel(self.model)
         self.pattern_table.setColumnWidth(0, 176)
@@ -118,7 +118,7 @@ class AuthWidget(QWidget):
 class TableEdit(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('Qt_handlers\\ui_files\\table_edit.ui', self)
+        uic.loadUi(r'Qt_handlers\ui_files\table_edit.ui', self)
         self.initUI()
     
     def initUI(self):
@@ -129,23 +129,41 @@ class TableEdit(QWidget):
         self.model.setTable('patterns')
         self.model.select()
         self.pattern_table.setModel(self.model)
-        self.pattern_table.setColumnWidth(0, 285)
-        self.pattern_table.setColumnWidth(1, 285)
+        self.pattern_table.setColumnWidth(0, 265)
+        self.pattern_table.setColumnWidth(1, 265)
         self.delete_button.clicked.connect(self.delete_item)
-        # self.drop_button.clicked.connect()
+        self.drop_button.clicked.connect(self.drop_table)
 
     def delete_item(self):
-        # Получаем список элементов без повторов и их id
-        rows = list(set([i.row() for i in self.pattern_table.selectedItems()]))
-        names = [self.pattern_table.item(i, 0).text() for i in rows]
-        # Спрашиваем у пользователя подтверждение на удаление элементов
-        valid = QMessageBox.question(
-            self, '', "Действительно удалить элементы с id " + ",".join(names),
+        query = self.query_lineedit.text()
+        msgbox = QMessageBox()
+        msgbox.setStyleSheet("QLable {color: white;}")
+        valid = msgbox.question(
+            self, '', f"Are you sure you want to completethis query: {query}",
             QMessageBox.Yes, QMessageBox.No)
-        # Если пользователь ответил утвердительно, удаляем элементы. 
+        # Если пользователь ответил утвердительно, выполняем запрос. 
         # Не забываем зафиксировать изменения
         if valid == QMessageBox.Yes:
-            cur = self.db.cursor()
-            cur.execute("DELETE FROM patterns WHERE pattern_name IN (" + ", ".join(
-                '?' * len(names)) + ")", names)
-        self.db.commit()
+            try:
+                db.sql_complte_user_query(query)
+                self.model.setTable('patterns')
+                self.model.select()
+                self.pattern_table.setModel(self.model)
+                self.pattern_table.setColumnWidth(0, 265)
+                self.pattern_table.setColumnWidth(1, 265)
+            except Exception:
+                self.table_edit_lable.setText('Failed to complete the query')
+
+    def drop_table(self):
+        msgbox = QMessageBox()
+        msgbox.setStyleSheet("QLable {color: white;}")
+        valid = msgbox.question(
+            self, '', f"Are you sure you want to drop whole table?",
+            QMessageBox.Yes, QMessageBox.No)
+        if valid == QMessageBox.Yes:
+            db.sql_drop_table('patterns')
+            self.model.setTable('patterns')
+            self.model.select()
+            self.pattern_table.setModel(self.model)
+            self.pattern_table.setColumnWidth(0, 265)
+            self.pattern_table.setColumnWidth(1, 265)

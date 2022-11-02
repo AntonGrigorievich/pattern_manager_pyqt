@@ -190,15 +190,10 @@ QPushButton:hover {
 	border:2px solid  rgb(104, 104, 104) ;
 }
 
-QLabel:hover {
-	color: rgb(178, 246, 159);
-    cursor: pointer;
-    background-color: rgba(104, 104, 104, 0.911);
-}
 </string>
     </property>
     <property name="text">
-     <string>folder (folder_name) by pattern (pattern_name) succesfully made!</string>
+     <string>Notifications will be here</string>
     </property>
    </widget>
    <widget class="QLabel" name="greeting_lable">
@@ -221,13 +216,6 @@ QLabel:hover {
 	text-transform: uppercase;
 }
 
-QLabel:hover {
-	color: rgb(178, 246, 159);
-    /* transform: translateY(3px);*/
-    /*transform: skewY(-1deg); */
-    cursor: pointer;
-    background-color: rgba(104, 104, 104, 0.911);
-}
 </string>
     </property>
     <property name="text">
@@ -288,11 +276,6 @@ QTableCornerButton::section {
 	text-transform: none;
 }
 
-QLabel:hover {
-	color: rgb(178, 246, 159);
-    cursor: pointer;
-    background-color: rgba(104, 104, 104, 0.911);
-}
 </string>
     </property>
     <property name="text">
@@ -323,7 +306,7 @@ QLabel:hover {
 }
 
 QPushButton:hover {
-	border: rgb(255, 170, 0);
+	color: rgb(178, 246, 159);
     cursor: pointer;
     background-color: rgba(104, 104, 104, 0.911);
 }</string>
@@ -356,7 +339,7 @@ QPushButton:hover {
 }
 
 QPushButton:hover {
-	border: rgb(255, 170, 0);
+	color: rgb(178, 246, 159);
     cursor: pointer;
     background-color: rgba(104, 104, 104, 0.911);
 }</string>
