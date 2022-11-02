@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../pictures/misha_boxer.jpg</normaloff>../../pictures/misha_boxer.jpg</iconset>
+    <normaloff>L:/VS/vsProjects/test_task/pictures/misha_boxer.jpg</normaloff>L:/VS/vsProjects/test_task/pictures/misha_boxer.jpg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow {
@@ -332,7 +332,7 @@ QPushButton:hover {
      <string>update table</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="create_folder_button_3">
+   <widget class="QPushButton" name="edit_table_button">
     <property name="geometry">
      <rect>
       <x>660</x>
@@ -362,7 +362,7 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>as</string>
+     <string>edit table</string>
     </property>
    </widget>
   </widget>

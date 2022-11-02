@@ -2,7 +2,7 @@ import shutil
 import zipfile
 import os
 from PyQt5 import uic  # Импортируем uic
-from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog
+from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, QMessageBox
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from app import db
 
@@ -22,11 +22,13 @@ class MainWindow(QMainWindow):
         self.model = QSqlTableModel(self, db)
         self.model.setTable('patterns')
         self.model.select()
+        self.edit_widg = TableEdit()
         self.pattern_table.setModel(self.model)
         self.pattern_table.setColumnWidth(0, 176)
         self.pattern_table.setColumnWidth(1, 177)
         self.create_button.clicked.connect(self.create_pattern)
         self.table_update_button.clicked.connect(self.update_table)
+        self.edit_table_button.clicked.connect(self.show_table_edit)
     
     def create_pattern(self):
         pattern_name, ok_pressed  =  QInputDialog.getText(self, "Insert pattern name", 
@@ -58,7 +60,10 @@ class MainWindow(QMainWindow):
         self.pattern_table.setModel(self.model)
         self.pattern_table.setColumnWidth(0, 176)
         self.pattern_table.setColumnWidth(1, 177)
-        self.notify_lable.setText('Table updated')        
+        self.notify_lable.setText('Table updated') 
+
+    def show_table_edit(self):
+        self.edit_widg.show()
 
 
 
@@ -108,3 +113,39 @@ class AuthWidget(QWidget):
 
     def initUI(self):
         pass
+
+
+class TableEdit(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('Qt_handlers\\ui_files\\table_edit.ui', self)
+        self.initUI()
+    
+    def initUI(self):
+        db = QSqlDatabase.addDatabase('QSQLITE')
+        db.setDatabaseName('database.db')
+        db.open()
+        self.model = QSqlTableModel(self, db)
+        self.model.setTable('patterns')
+        self.model.select()
+        self.pattern_table.setModel(self.model)
+        self.pattern_table.setColumnWidth(0, 285)
+        self.pattern_table.setColumnWidth(1, 285)
+        self.delete_button.clicked.connect(self.delete_item)
+        # self.drop_button.clicked.connect()
+
+    def delete_item(self):
+        # Получаем список элементов без повторов и их id
+        rows = list(set([i.row() for i in self.pattern_table.selectedItems()]))
+        names = [self.pattern_table.item(i, 0).text() for i in rows]
+        # Спрашиваем у пользователя подтверждение на удаление элементов
+        valid = QMessageBox.question(
+            self, '', "Действительно удалить элементы с id " + ",".join(names),
+            QMessageBox.Yes, QMessageBox.No)
+        # Если пользователь ответил утвердительно, удаляем элементы. 
+        # Не забываем зафиксировать изменения
+        if valid == QMessageBox.Yes:
+            cur = self.db.cursor()
+            cur.execute("DELETE FROM patterns WHERE pattern_name IN (" + ", ".join(
+                '?' * len(names)) + ")", names)
+        self.db.commit()
