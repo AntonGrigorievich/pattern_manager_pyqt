@@ -5,7 +5,6 @@ from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, QMessageBox
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from app import db
-print()
 
 class MainWindow(QMainWindow):
     def __init__(self):
