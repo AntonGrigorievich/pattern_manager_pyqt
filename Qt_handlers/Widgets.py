@@ -2,7 +2,8 @@ import shutil
 import zipfile
 import os
 from PyQt5 import uic  # Импортируем uic
-from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, \
+    QMessageBox, QRadioButton
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from app import db
 
@@ -28,20 +29,21 @@ class MainWindow(QMainWindow):
         self.create_button.clicked.connect(self.create_pattern)
         self.table_update_button.clicked.connect(self.update_table)
         self.edit_table_button.clicked.connect(self.show_table_edit)
-    
+        self.create_folder_button.clicked.connect(self.open_choice_widget)
+
     def create_pattern(self):
         pattern_name, ok_pressed  =  QInputDialog.getText(self, "Insert pattern name", 
                                                 "What will the pattern name be?")
         if pattern_name not in db.sql_get_pattern_names() and pattern_name.strip() != '':
             if ok_pressed:
                 fname = QFileDialog.getOpenFileName(self, 'Выбратьz zip папку', '', '(*.zip)')[0]
+                # добавить проверку на ориг директорию
                 if fname not in db.sql_get_pattern_directorys() and fname.strip() != '':
                     file_zip = zipfile.ZipFile(f'patterns\\{pattern_name}.zip', 'w')
 
                     shutil.copy(fname, f'patterns\\{pattern_name}.zip')
                     file_zip.close()
                     db.sql_add_pattern(pattern_name, f'patterns/{pattern_name}.zip')
-                    # self.model.setTable('patterns')
                     self.model.select()
                     self.pattern_table.setModel(self.model)
                     self.pattern_table.setColumnWidth(0, 176)
@@ -62,7 +64,19 @@ class MainWindow(QMainWindow):
         self.notify_lable.setText('Table updated') 
 
     def show_table_edit(self):
+        self.edit_widg.update_table()  
         self.edit_widg.show()
+
+    def open_choice_widget(self):
+        self.choice_widg = ChoiceWidget()
+        for pattern_name in db.sql_get_pattern_names():
+            self.choice_widg.button = QRadioButton(self)
+            self.choice_widg.button.toggled.connect(self.choice_widg.choose_pattern)
+            self.choice_widg.button.text = pattern_name
+            self.choice_widg.button.setText(pattern_name)
+            self.choice_widg.button.setStyleSheet('color: white;')
+            self.choice_widg.choicewidget_layout.addWidget(self.choice_widg.button)
+        self.choice_widg.show()
 
 
 
@@ -181,3 +195,18 @@ class TableEdit(QWidget):
         self.pattern_table.setColumnWidth(0, 265)
         self.pattern_table.setColumnWidth(1, 265)
         self.table_edit_lable.setText('Table updated') 
+
+
+class ChoiceWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi(r'Qt_handlers\ui_files\choice_widget.ui', self)
+        self.initUI()
+
+    def initUI(self):
+        self.pattern_choose_button.clicked.connect(self.choose_pattern)
+
+    def choose_pattern(self):
+        res = self.sender()
+        if res.isChecked():
+            print(res.text)

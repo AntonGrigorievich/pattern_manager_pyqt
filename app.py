@@ -16,4 +16,3 @@ if __name__ == '__main__':
     ex = Widgets.AuthWidget()
     ex.show()
     sys.exit(app.exec_())
-# C:\Users\shpri\git\GitHub\pattern_manager_pyqt\patterns\desktop.zip

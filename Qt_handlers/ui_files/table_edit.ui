@@ -35,7 +35,7 @@
     <rect>
      <x>20</x>
      <y>320</y>
-     <width>281</width>
+     <width>271</width>
      <height>41</height>
     </rect>
    </property>
@@ -49,7 +49,6 @@
     transition: 0.5s;
     display: inline-block;
     position: relative;
-    letter-spacing: 0.3em;
 	background-color:rgb(169, 255, 186);
 	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
 	border-radius: 20px;
@@ -86,7 +85,6 @@ QPushButton:hover {
     transition: 0.5s;
     display: inline-block;
     position: relative;
-    letter-spacing: 0.3em;
 	background-color: rgb(255, 94, 97);
 	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
 	border-radius: 20px;
@@ -206,9 +204,9 @@ QLabel:hover {
   <widget class="QPushButton" name="update_button">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>300</x>
      <y>320</y>
-     <width>101</width>
+     <width>111</width>
      <height>41</height>
     </rect>
    </property>
@@ -222,7 +220,6 @@ QLabel:hover {
     transition: 0.5s;
     display: inline-block;
     position: relative;
-    letter-spacing: 0.3em;
 	background-color:rgb(169, 255, 186);
 	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
 	border-radius: 20px;

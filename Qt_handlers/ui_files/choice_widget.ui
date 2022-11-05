@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChoiceWidget</class>
+ <widget class="QWidget" name="ChoiceWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>503</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>choise widget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rgb(35, 35, 35);
+}</string>
+  </property>
+  <widget class="QPushButton" name="pattern_choose_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>450</y>
+     <width>371</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.3em;
+	background-color:rgb(169, 255, 186);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgb(115, 255, 148);
+}</string>
+   </property>
+   <property name="text">
+    <string>choose pattern</string>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scrollArea">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>371</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>369</width>
+      <height>429</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>351</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="choicewidget_layout"/>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
