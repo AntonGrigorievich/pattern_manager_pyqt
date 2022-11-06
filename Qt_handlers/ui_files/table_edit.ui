@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>table edit</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../OneDrive/Рабочий стол/icon.png</normaloff>../../../../../OneDrive/Рабочий стол/icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
 	background-color: rgb(35, 35, 35);
@@ -63,7 +67,7 @@ QPushButton:hover {
 }</string>
    </property>
    <property name="text">
-    <string>complete the query</string>
+    <string>delete item</string>
    </property>
   </widget>
   <widget class="QPushButton" name="drop_button">
