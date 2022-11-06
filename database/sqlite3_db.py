@@ -54,14 +54,25 @@ class DataBase:
         curs.execute("""SELECT pattern_name FROM patterns""")
         return [i[0] for i in curs.fetchall()]
 
-    # метод получения директорий всех шаблонов
+    # метод получения оригинальных директорий всех шаблонов
     def sql_get_pattern_directorys(self):
         curs.execute("""SELECT orig_directory FROM patterns""")
         return [i[0] for i in curs.fetchall()]
 
+    # метод получения директорий всех шаблонов
     def sql_get_pattern_local_directorys(self):
         curs.execute("""SELECT folder_directory FROM patterns""")
         return [i[0] for i in curs.fetchall()]
+
+    # метод получения директории одного шаблона
+    def sql_get_pattern_dir(self, pattern_name):
+        curs.execute(f"""SELECT folder_directory FROM patterns WHERE pattern_name = '{pattern_name}'""")
+        return [i[0] for i in curs.fetchone()]
+
+    # метод получения оригинальной директории одного шаблона
+    def sql_get_pattern_orig_dir(self, pattern_name):
+        curs.execute(f"""SELECT orig_directory FROM patterns WHERE pattern_name = '{pattern_name}'""")
+        return curs.fetchone()[0]
 
     # метод удаления шаблона из таблицы
     def sql_remove_pattern(self, pattern_name):

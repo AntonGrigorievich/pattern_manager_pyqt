@@ -1,9 +1,8 @@
 import shutil
 import zipfile
-import os
-from PyQt5 import uic  # Импортируем uic
+from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, \
-    QMessageBox, QRadioButton
+     QRadioButton
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
 from app import db
 from Qt_handlers.Widgets.TableEditFile import TableEdit
@@ -39,7 +38,6 @@ class MainWindow(QMainWindow):
         if pattern_name not in db.sql_get_pattern_names(db) and pattern_name.strip() != '':
             if ok_pressed:
                 fname = QFileDialog.getOpenFileName(self, 'Выбратьz zip папку', '', '(*.zip)')[0]
-                # добавить проверку на ориг директорию
                 if fname not in db.sql_get_pattern_directorys(db) and fname.strip() != '':
                     file_zip = zipfile.ZipFile(f'patterns\\{pattern_name}.zip', 'w')
 
