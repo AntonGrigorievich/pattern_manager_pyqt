@@ -10,10 +10,16 @@
     <height>577</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>865</width>
+    <height>577</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>865</width>
-    <height>580</height>
+    <height>577</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -30,8 +36,8 @@
   </property>
   <property name="iconSize">
    <size>
-    <width>50</width>
-    <height>50</height>
+    <width>100</width>
+    <height>100</height>
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -323,8 +329,8 @@ QPushButton:hover {
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>110</y>
-      <width>206</width>
+      <y>310</y>
+      <width>411</width>
       <height>41</height>
      </rect>
     </property>
@@ -345,13 +351,51 @@ QPushButton:hover {
      <string>Instructions:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="examples_lable_3">
+   <widget class="QPushButton" name="instruction_button">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>110</y>
-      <width>206</width>
+      <x>30</x>
+      <y>359</y>
+      <width>411</width>
       <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    color: rgb(34, 34, 34);
+    text-decoration: none;
+    /* margin-top: 10px; */
+    padding: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.3em;
+	background-color:rgb(169, 255, 186);
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	border-radius: 20px;
+}
+
+QPushButton:hover {
+	border: rgb(255, 170, 0);
+    cursor: pointer;
+    background-color: rgb(115, 255, 148);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/instruction.png</normaloff>:/instruction.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="image_lable">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
+      <width>411</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -368,80 +412,14 @@ QPushButton:hover {
 </string>
     </property>
     <property name="text">
-     <string>Download the table:</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="instruction_button">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>160</y>
-      <width>201</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-    color: rgb(34, 34, 34);
-    text-decoration: none;
-    /* margin-top: 10px; */
-    padding: 1px;
-    text-transform: uppercase;
-    display: inline-block;
-    position: relative;
-    letter-spacing: 0.3em;
-	background-color:rgb(169, 255, 186);
-	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
-	border-radius: 20px;
-}
-
-QPushButton:hover {
-	border: rgb(255, 170, 0);
-    cursor: pointer;
-    background-color: rgb(115, 255, 148);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="table_download_button">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>160</y>
-      <width>201</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-    color: rgb(34, 34, 34);
-    text-decoration: none;
-    /* margin-top: 10px; */
-    padding: 1px;
-    text-transform: uppercase;
-    display: inline-block;
-    position: relative;
-    letter-spacing: 0.3em;
-	background-color:rgb(169, 255, 186);
-	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
-	border-radius: 20px;
-}
-
-QPushButton:hover {
-	border: rgb(255, 170, 0);
-    cursor: pointer;
-    background-color: rgb(115, 255, 148);
-}</string>
-    </property>
-    <property name="text">
      <string/>
     </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -34,45 +34,11 @@
 	background-color: rgb(35, 35, 35);
 }</string>
   </property>
-  <widget class="QPushButton" name="pattern_choose_button">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>450</y>
-     <width>371</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    color: rgb(34, 34, 34);
-    text-decoration: none;
-    /* margin-top: 10px; */
-    padding: 1px;
-    text-transform: uppercase;
-    display: inline-block;
-    position: relative;
-    letter-spacing: 0.3em;
-	background-color:rgb(169, 255, 186);
-	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
-	border-radius: 20px;
-}
-
-QPushButton:hover {
-	border: rgb(255, 170, 0);
-    cursor: pointer;
-    background-color: rgb(115, 255, 148);
-}</string>
-   </property>
-   <property name="text">
-    <string>choose pattern</string>
-   </property>
-  </widget>
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>9</y>
+     <y>59</y>
      <width>371</width>
      <height>431</height>
     </rect>
@@ -101,6 +67,44 @@ QPushButton:hover {
      <layout class="QVBoxLayout" name="choicewidget_layout"/>
     </widget>
    </widget>
+  </widget>
+  <widget class="QLabel" name="choise_lable">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>371</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>371</width>
+     <height>41</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>371</width>
+     <height>41</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>Wich pattern would you like to use?</string>
+   </property>
   </widget>
  </widget>
  <resources/>

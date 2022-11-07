@@ -1,12 +1,14 @@
 import shutil
 import zipfile
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QWidget, QFileDialog, QInputDialog, \
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QInputDialog, \
      QRadioButton
 from PyQt5.QtSql import QSqlDatabase, QSqlTableModel
+from PyQt5.QtGui import QPixmap
 from app import db
 from Qt_handlers.Widgets.TableEditFile import TableEdit
 from Qt_handlers.Widgets.ChoiceWidgetFile import ChoiceWidget
+from Qt_handlers.Widgets.InstructionWidgetFile import InstructionWidget
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -31,6 +33,11 @@ class MainWindow(QMainWindow):
         self.table_update_button.clicked.connect(self.update_table)
         self.edit_table_button.clicked.connect(self.show_table_edit)
         self.create_folder_button.clicked.connect(self.open_choice_widget)
+        self.instruction_button.clicked.connect(self.open_instruction)
+        self.pixmap = QPixmap('icons\logog.png')
+        print('zxczxczxczxczxczxc', self.pixmap.isNull())
+        self.image_lable.setPixmap(self.pixmap)
+        
 
     def create_pattern(self):
         pattern_name, ok_pressed  =  QInputDialog.getText(self, "Insert pattern name", 
@@ -67,12 +74,20 @@ class MainWindow(QMainWindow):
         self.edit_widg.show()
 
     def open_choice_widget(self):
-        self.choice_widg = ChoiceWidget()
-        for pattern_name in db.sql_get_pattern_names(db):
-            self.choice_widg.button = QRadioButton(self)
-            self.choice_widg.button.toggled.connect(self.choice_widg.choose_pattern)
-            self.choice_widg.button.text = pattern_name
-            self.choice_widg.button.setText(pattern_name)
-            self.choice_widg.button.setStyleSheet('color: white;')
-            self.choice_widg.choicewidget_layout.addWidget(self.choice_widg.button)
-        self.choice_widg.show()
+        if self.foldername_lineedit.text() == '':
+            self.notify_lable.setText('please choose the name of your folder')
+        else:
+            self.choice_widg = ChoiceWidget()
+            self.choice_widg.folder_name = self.foldername_lineedit.text()
+            for pattern_name in db.sql_get_pattern_names(db):
+                self.choice_widg.button = QRadioButton(self)
+                self.choice_widg.button.toggled.connect(self.choice_widg.choose_pattern)
+                self.choice_widg.button.text = pattern_name
+                self.choice_widg.button.setText(pattern_name)
+                self.choice_widg.button.setStyleSheet('color: white;')
+                self.choice_widg.choicewidget_layout.addWidget(self.choice_widg.button)
+            self.choice_widg.show()
+
+    def open_instruction(self):
+        self.instr = InstructionWidget()
+        self.instr.show()

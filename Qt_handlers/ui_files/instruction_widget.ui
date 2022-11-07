@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InstructionWidget</class>
+ <widget class="QWidget" name="InstructionWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>553</width>
+    <height>224</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>553</width>
+    <height>224</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>553</width>
+    <height>224</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Instruction</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../OneDrive/Рабочий стол/icon.png</normaloff>../../../../../OneDrive/Рабочий стол/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rgb(35, 35, 35);
+}</string>
+  </property>
+  <widget class="QLabel" name="examples_lable">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>531</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>To make sure you are using this application propperly, please read the following instructions:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="examples_lable_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>531</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>If you want to insert a new pattern in the database you should make a zip archive of a original folder
+after that you need to press the creation button and choose th name of the pattern.
+After that you can find your zip-file in a dialogue. New pattern will be in the database</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="examples_lable_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>531</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-family: Plain,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	padding-left: 1em;
+	color: white;
+	background-color: rgb(104, 104, 104);
+	border-radius: 20px;
+	border:2px solid  rgb(104, 104, 104) ;
+	text-transform: none;
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string>If you want to make a folder by some of the patterns in the database, you should type the name you need
+in the LineEdin on the main window and press the 'create folder' button. After that you will have to choose the pattern you want to use, modules
+that you want to include and a directory where you want to put your folder</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

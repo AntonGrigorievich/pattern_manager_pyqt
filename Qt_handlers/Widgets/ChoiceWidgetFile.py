@@ -13,7 +13,7 @@ class ChoiceWidget(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.pattern_choose_button.clicked.connect(self.choose_pattern)
+        pass
 
     def choose_pattern(self):
         try:
@@ -47,19 +47,24 @@ class ChoiceWidget(QWidget):
             file_zip.extractall('extract')
             print(os.listdir(f'extract'))
             file_zip.close()
+            self.settings_widg = SettingsWidget()
+            self.settings_widg.directory = direct
+            self.settings_widg.folder_name = self.folder_name
+            self.settings_widg.modules = os.listdir(f'extract')
+            self.settings_widg.chckboxes = []
+            for module in self.settings_widg.modules:
+                checkbox = QCheckBox(module, self.settings_widg)
+                checkbox.setText(module)
+                checkbox.setStyleSheet('color: white;')
+                checkbox.setChecked(True)
+                self.settings_widg.chckboxes.append(checkbox)
+                self.settings_widg.settings_layout.addWidget(checkbox)
+            try:
+                shutil.rmtree('extract')
+            except Exception:
+                pass
+            self.settings_widg.show()
+            self.hide()
         except Exception:
-            pass
-        self.settings_widg = SettingsWidget()
-        self.settings_widg.modules = os.listdir(f'extract')
-        for module in self.settings_widg.modules:
-            checkbox = QCheckBox(module, self.settings_widg)
-            checkbox.setText(module)
-            checkbox.setStyleSheet('color: white;')
-            checkbox.setChecked(True)
-            self.settings_widg.settings_layout.addWidget(checkbox)
-        try:
-            shutil.rmtree('extract')
-        except Exception:
-            pass
-        self.settings_widg.show()
-        self.hide()
+            self.choise_lable.setText('Failed to complete the query.')
+        
