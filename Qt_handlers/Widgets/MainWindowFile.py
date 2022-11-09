@@ -1,5 +1,7 @@
 import shutil
 import zipfile
+import csv
+import os
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QInputDialog, \
      QRadioButton
@@ -34,8 +36,9 @@ class MainWindow(QMainWindow):
         self.edit_table_button.clicked.connect(self.show_table_edit)
         self.create_folder_button.clicked.connect(self.open_choice_widget)
         self.instruction_button.clicked.connect(self.open_instruction)
-        self.pixmap = QPixmap('icons\logog.png')
-        print('zxczxczxczxczxczxc', self.pixmap.isNull())
+        self.download_button.clicked.connect(self.download_table)
+        self.pixmap = QPixmap('icons\icon.png')
+        print('----------------------------------', self.pixmap.isNull())
         self.image_lable.setPixmap(self.pixmap)
         
 
@@ -55,7 +58,8 @@ class MainWindow(QMainWindow):
                     self.pattern_table.setModel(self.model)
                     self.pattern_table.setColumnWidth(0, 176)
                     self.pattern_table.setColumnWidth(1, 177)
-                    self.notify_lable.setText("""Pattern successfully made!""")
+                    self.notify_lable.setText("""Pattern successfully made!
+Please don't change directory of the original file to avoid errors""")
                 else:
                     self.notify_lable.setText('Pattern by this directory aleady exists')
 
@@ -91,3 +95,21 @@ class MainWindow(QMainWindow):
     def open_instruction(self):
         self.instr = InstructionWidget()
         self.instr.show()
+
+    def download_table(self):
+        try:
+            direct = QFileDialog.getExistingDirectory(self, 'Where should we put the file?', '.')
+            try:
+                os.remove(f'{direct}/table.csv')
+            except Exception:
+                pass
+            with open(f'{direct}/table.csv', 'w', newline='', encoding="utf8") as csvfile:
+                writer = csv.writer(
+                    csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL
+                )
+                writer.writerow(['pattern name', 'local pattern dir', 'orig pattern dir'])
+                for line in db.sql_get_table(db, 'patterns'):
+                    writer.writerow([line[0], line[1], line[2]])
+                self.notify_lable.setText('File table.csv downloaded!')
+        except Exception:
+            pass

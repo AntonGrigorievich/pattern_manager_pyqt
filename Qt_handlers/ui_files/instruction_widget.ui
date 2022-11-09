@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>553</width>
-    <height>224</height>
+    <width>593</width>
+    <height>244</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>553</width>
-    <height>224</height>
+    <width>593</width>
+    <height>244</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>553</width>
-    <height>224</height>
+    <width>593</width>
+    <height>244</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -39,9 +39,15 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>531</width>
+     <width>571</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Plain,Helvetica Neue,Arial,Noto Sans,sans-serif</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
@@ -65,9 +71,15 @@
     <rect>
      <x>10</x>
      <y>60</y>
-     <width>531</width>
-     <height>71</height>
+     <width>571</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Plain,Helvetica Neue,Arial,Noto Sans,sans-serif</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
@@ -92,10 +104,16 @@ After that you can find your zip-file in a dialogue. New pattern will be in the 
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>140</y>
-     <width>531</width>
-     <height>71</height>
+     <y>150</y>
+     <width>571</width>
+     <height>81</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Plain,Helvetica Neue,Arial,Noto Sans,sans-serif</family>
+     <pointsize>8</pointsize>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
@@ -111,9 +129,9 @@ After that you can find your zip-file in a dialogue. New pattern will be in the 
 </string>
    </property>
    <property name="text">
-    <string>If you want to make a folder by some of the patterns in the database, you should type the name you need
-in the LineEdin on the main window and press the 'create folder' button. After that you will have to choose the pattern you want to use, modules
-that you want to include and a directory where you want to put your folder</string>
+    <string>If you want to make a folder by any pattern from the database, you should type the name you need
+in the LineEdin on the main window and press the 'create folder' button. After that you will have to choose
+the pattern you want to use, modules that you want to include and a directory where you want to put your folder</string>
    </property>
   </widget>
  </widget>

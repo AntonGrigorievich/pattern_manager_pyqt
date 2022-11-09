@@ -83,3 +83,8 @@ class DataBase:
     def sql_complte_user_query(self, query):
         curs.execute(query)
         db.commit()
+
+    # метод получения всех данных таблицы
+    def sql_get_table(self, table):
+        curs.execute(f"""SELECT * FROM {table}""")
+        return curs.fetchall()

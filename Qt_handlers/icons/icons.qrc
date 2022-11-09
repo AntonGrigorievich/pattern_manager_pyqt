@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>download_icon.jpg</file>
     <file>instruction.png</file>
   </qresource>
 </RCC>
