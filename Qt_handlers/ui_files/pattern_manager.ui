@@ -467,7 +467,7 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>download txt</string>
+     <string>download csv</string>
     </property>
     <property name="icon">
      <iconset resource="../icons/icons.qrc">
